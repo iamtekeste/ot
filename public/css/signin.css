@@ -1,0 +1,107 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+table,th, td
+{
+  border: 1px solid black;
+   margin-right: -115px;
+   text-align: center;
+
+}
+table.nested > thead > tr > td,
+table.nested > tbody > tr > td,
+table.nested > tfoot > tr > td,
+table.nested > tr > td {
+
+   padding-right: 50px;
+   border: 1px solid black;
+   text-align: center;
+   margin-right: -50px;
+}
+table.hours > thead > tr > td,
+table.hours > tbody > tr > td,
+table.hours > tfoot > tr > td,
+table.hours > tr > td {
+  padding-right: 100px;
+  border: 1px solid black;
+}
+fieldset.scheduler-border {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend.scheduler-border {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width:inherit; /* Or auto */
+    padding:0 10px; /* To give a bit of padding on the left and right */
+    border-bottom:none;
+
+}
+
+.show-grid [class^="col-"] {
+padding-top: 0px;
+padding-bottom: 0px;
+border-right: 1px solid #000;
+border-top: 1px solid #000;
+font-size: 11.4px;
+text-align: center;
+font-weight: bold;
+background-color: #C0C0C0;
+}
+.heading{
+  height: 79px;
+  text-align: right;
+}
+
+.cells [class^="col-"]{
+font-size: 11px;
+text-align: center;
+border-right: 1px solid #000;
+border-top: 1px solid #000;
+padding-top: 0px;
+padding-bottom: 0px;
+height: 45px;
+}
