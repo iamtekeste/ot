@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
   {{ HTML::script('js/jquery.min.js') }}
+ {{ HTML::style('css/print.css', array('media' => 'all')) }}
   {{ HTML::style('css/bootstrap.min.css') }}
   {{ HTML::style('css/bootstrap-timepicker.min.css') }}
   {{ HTML::style('css/signin.css') }}
@@ -23,11 +24,10 @@
           </div>
 
         @endif
+          @yield('header')
         <div class="container">
             @yield('content')
         </div>
-<script type="text/javascript">
-            $('#timepicker1').timepicker();
-        </script>
+        @yield('foter')
     </body>
 </html>

@@ -18,12 +18,17 @@ class OtsController extends BaseController {
 	{
 				$UserId =  Auth::user()->id;
 				$Ots = User::find($UserId)->ots;
-				 //return View::make('ots.index')->with('Ots', $Ots);
-				$html = View::make('ots.show')->with('Ots', $Ots)->render();
-$pdf = App::make('snappy.pdf.wrapper');
- $pdf->loadHTML($html);
- return $pdf->stream();
+				 return View::make('ots.report')->with('Ots', $Ots);
 	}
+
+public function pdf()
+{
+		$UserId = Auth::user()->id;
+		$Ots = User::find($UserId)->ots;
+		$pdf = PDF::loadView('ots.report', array('Ots' => $Ots));
+		// return $pdf->download('report.pdf');
+		return $pdf->stream();
+}
 
 	static public function getRange ($start, $end){
 
@@ -36,27 +41,7 @@ $pdf = App::make('snappy.pdf.wrapper');
 
 	static public function getDay($end){
 
-		if($end->dayOfWeek == 1)
-		{
-			return "Monday";
-		}
-		elseif ($end->dayOfWeek == 2) {
-			return "Tuesday";
-		}
-		elseif ($end->dayOfWeek == 3) {
-			return "Wednesday";
-		}
-		elseif ($end->dayOfWeek == 4) {
-			return "Thursday";
-		}
-		elseif ($end->dayOfWeek == 5) {
-			return "Friday";
-		}
-		elseif ($end->dayOfWeek == 6) {
-			return "Saturday";
-		}
-		else
-			return "Sunday";
+		return date('D', strtotime($end));
 	}
 
 	static public function getHoursWorked ($end, $start){
@@ -69,6 +54,53 @@ $pdf = App::make('snappy.pdf.wrapper');
 		 }
 		 else
 		 	return $diff." 1/2";
+	}
+
+	static public function getTotals(){
+
+		$UserId = Auth::user()->id;
+		$ots = User::find($UserId)->ots;
+
+		$tots = 0;
+		$etots = 0;
+		$ntots = 0;
+		$wtots = 0;
+		$counter = 0 ;
+
+		foreach ($ots as $ot) {
+			$diff = OtsController::getHoursWorked($ot->starttime, $ot->endtime);
+		
+			if(str_contains($diff, '1/2'))
+			{
+				$diff = Str::words($diff, 1);
+				$tots = $tots + intval($diff) + 0.5;
+
+						if ($ot->endtime->isWeekend()) {
+							$wtots = $wtots + intval($diff) + 0.5;
+							$counter = $counter - 1;
+					}
+					
+
+			}
+			else{
+				$diff = Str::words($diff, 1);
+				$tots = $tots + intval($diff);
+					if ($ot->endtime->isWeekend()) {
+					$wtots = $wtots + intval($diff);
+			}
+			}
+			$counter = $counter + 1;
+		}
+		$etots = $counter * 5;
+		$ntots = $tots - $etots - $wtots;
+		$atots = array(
+			'tots' => $tots,
+			'etots' => $etots,
+			'ntots' => $ntots,
+			'wtots'	=> $wtots
+			);
+		return $atots;
+
 	}
 
 	/**
@@ -145,7 +177,7 @@ $pdf = App::make('snappy.pdf.wrapper');
 	{
 				$UserId =  Auth::user()->id;
 				$Ots = User::find($UserId)->ots;
-				return View::make('ots.show')->with('Ots', $Ots);	}
+				return View::make('ots.report')->with('Ots', $Ots);	}
 
 	/**
 	 * Show the form for editing the specified resource.

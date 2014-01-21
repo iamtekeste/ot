@@ -36,12 +36,7 @@
 			"php artisan key:generate"
 		]
 	},
-	"repositories": [
-    {
-        "type":"vcs",
-        "url":"/home/marek/dev/sf2-bundles/TheodoRogerCmsBundle"
-    }
-],
+	
 	"config": {
 		"preferred-install": "dist"
 	},

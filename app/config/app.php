@@ -107,10 +107,9 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
-		'Barryvdh\DomPDF\ServiceProvider',
-		'Barryvdh\Snappy\ServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',
-
+		'Barryvdh\Snappy\ServiceProvider',
+		'Barryvdh\DomPDF\ServiceProvider',
 	),
 
 	/*
@@ -176,9 +175,9 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'PDF' 						=> 'Barryvdh\DomPDF\Facade',
-		'PDF' => 'Barryvdh\Snappy\Facades\SnappyPdf',
-		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+		'Excel'						=> 'Maatwebsite\Excel\Facades\Excel',
+		'PDF' 						=> 'Barryvdh\Snappy\Facades\SnappyPdf',
+		'BPDF' 						=> 'Barryvdh\DomPDF\Facade',
 
 	),
 

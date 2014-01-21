@@ -84,8 +84,7 @@ legend.scheduler-border {
 .show-grid [class^="col-"] {
 padding-top: 0px;
 padding-bottom: 0px;
-border-right: 1px solid #000;
-border-top: 1px solid #000;
+border: 1px solid #000;
 font-size: 11.4px;
 text-align: center;
 font-weight: bold;
@@ -100,7 +99,8 @@ background-color: #C0C0C0;
 font-size: 11px;
 text-align: center;
 border-right: 1px solid #000;
-border-top: 1px solid #000;
+border-left: 1px solid #000;
+border-bottom: 1px solid #000;
 padding-top: 0px;
 padding-bottom: 0px;
 height: 45px;
